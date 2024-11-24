@@ -167,131 +167,138 @@ const DocumentManager: React.FC = () => {
       <div className="mb-4">
         <input
           type="text"
-          className="w-[40%] p-2 border rounded"
+          className="w-[50%] p-2 border rounded"
           placeholder="Filter by filename..."
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
         />
       </div>
+      <div className="p-3 bg-gray-300 overflow-hidden">
+        <div className="overflow-x-auto bg-white">
+          <table className="w-full table-auto border-collapse">
+            <thead className="text-left">
+              <tr className="bg-gray-100">
+                <th className="p-2 border">
+                  <CiFileOn size={20} className="" />
+                </th>
+                <th className="p-2 border flex">
+                  Name
+                  <div className="flex ml-4">
+                    <a
+                      className={`inline-block cursor-pointer p-1 hover:bg-gray-300 ${
+                        sortOption.column === "name" &&
+                        sortOption.order === "asc"
+                          ? "bg-gray-300"
+                          : ""
+                      }`}
+                      onClick={() => handleSort("name", "asc")}
+                      aria-label="Name Ascending"
+                    >
+                      <AiOutlineSortAscending />
+                      <span className="sr-only">Name Ascending</span>
+                    </a>
+                    <a
+                      className={`inline-block cursor-pointer ml-1 p-1 hover:bg-gray-300 ${
+                        sortOption.column === "name" &&
+                        sortOption.order === "desc"
+                          ? "bg-gray-300"
+                          : ""
+                      }`}
+                      onClick={() => handleSort("name", "desc")}
+                      aria-label="Name Descending"
+                    >
+                      <AiOutlineSortDescending />
+                      <span className="sr-only">Name Descending</span>
+                    </a>
+                  </div>
+                </th>
+                <th className="p-2 border">Type</th>
+                <th className="p-2 border flex">
+                  Size
+                  <div className="flex ml-4">
+                    <a
+                      className={`inline-block cursor-pointer p-1 hover:bg-gray-300 ${
+                        sortOption.column === "size" &&
+                        sortOption.order === "asc"
+                          ? "bg-gray-300"
+                          : ""
+                      }`}
+                      onClick={() => handleSort("size", "asc")}
+                    >
+                      <AiOutlineSortAscending />
+                    </a>
+                    <a
+                      className={`inline-block cursor-pointer ml-1 p-1 hover:bg-gray-300 ${
+                        sortOption.column === "size" &&
+                        sortOption.order === "desc"
+                          ? "bg-gray-300"
+                          : ""
+                      }`}
+                      onClick={() => handleSort("size", "desc")}
+                    >
+                      <AiOutlineSortDescending />
+                    </a>
+                  </div>
+                </th>
+                <th className="p-2 border">
+                  <div className="flex">
+                    Added
+                    <div className="flex ml-4">
+                      <a
+                        className={`inline-block cursor-pointer p-1 hover:bg-gray-300 ${
+                          sortOption.column === "added" &&
+                          sortOption.order === "asc"
+                            ? "bg-gray-300"
+                            : ""
+                        }`}
+                        onClick={() => handleSort("added", "asc")}
+                      >
+                        <AiOutlineSortAscending />
+                      </a>
+                      <a
+                        className={`inline-block cursor-pointer ml-1 p-1 hover:bg-gray-300 ${
+                          sortOption.column === "added" &&
+                          sortOption.order === "desc"
+                            ? "bg-gray-300"
+                            : ""
+                        }`}
+                        onClick={() => handleSort("added", "desc")}
+                      >
+                        <AiOutlineSortDescending />
+                      </a>
+                    </div>
+                  </div>
+                </th>
+              </tr>
+            </thead>
 
-      <table className="w-full table-auto border-collapse">
-        <thead className="text-left">
-          <tr className="bg-gray-100">
-            <th className="p-2 border">
-              <CiFileOn size={20} className="" />
-            </th>
-            <th className="p-2 border flex">
-              Name
-              <div className="flex ml-4">
-                <a
-                  className={`inline-block cursor-pointer p-1 hover:bg-gray-300 ${
-                    sortOption.column === "name" && sortOption.order === "asc"
-                      ? "bg-gray-300"
-                      : ""
-                  }`}
-                  onClick={() => handleSort("name", "asc")}
-                  aria-label="Name Ascending"
-                >
-                  <AiOutlineSortAscending />
-                  <span className="sr-only">Name Ascending</span>
-                </a>
-                <a
-                  className={`inline-block cursor-pointer ml-1 p-1 hover:bg-gray-300 ${
-                    sortOption.column === "name" && sortOption.order === "desc"
-                      ? "bg-gray-300"
-                      : ""
-                  }`}
-                  onClick={() => handleSort("name", "desc")}
-                  aria-label="Name Descending"
-                >
-                  <AiOutlineSortDescending />
-                  <span className="sr-only">Name Descending</span>
-                </a>
-              </div>
-            </th>
-            <th className="p-2 border">Type</th>
-            <th className="p-2 border flex">
-              Size
-              <div className="flex ml-4">
-                <a
-                  className={`inline-block cursor-pointer p-1 hover:bg-gray-300 ${
-                    sortOption.column === "size" && sortOption.order === "asc"
-                      ? "bg-gray-300"
-                      : ""
-                  }`}
-                  onClick={() => handleSort("size", "asc")}
-                >
-                  <AiOutlineSortAscending />
-                </a>
-                <a
-                  className={`inline-block cursor-pointer ml-1 p-1 hover:bg-gray-300 ${
-                    sortOption.column === "size" && sortOption.order === "desc"
-                      ? "bg-gray-300"
-                      : ""
-                  }`}
-                  onClick={() => handleSort("size", "desc")}
-                >
-                  <AiOutlineSortDescending />
-                </a>
-              </div>
-            </th>
-            <th className="p-2 border">
-              <div className="flex">
-                Added
-                <div className="flex ml-4">
-                  <a
-                    className={`inline-block cursor-pointer p-1 hover:bg-gray-300 ${
-                      sortOption.column === "added" &&
-                      sortOption.order === "asc"
-                        ? "bg-gray-300"
-                        : ""
-                    }`}
-                    onClick={() => handleSort("added", "asc")}
+            <tbody>
+              {sortedFiles.map((item, index) => (
+                <tr key={index} className="hover:bg-gray-50">
+                  <td className="p-2 border">
+                    {item.type === "folder" ? <FaFolder /> : <FaFileAlt />}
+                  </td>
+                  <td
+                    className="p-2 border cursor-pointer"
+                    onClick={() => {
+                      if (item.type === "folder") openFolder(item as Folder);
+                    }}
                   >
-                    <AiOutlineSortAscending />
-                  </a>
-                  <a
-                    className={`inline-block cursor-pointer ml-1 p-1 hover:bg-gray-300 ${
-                      sortOption.column === "added" &&
-                      sortOption.order === "desc"
-                        ? "bg-gray-300"
-                        : ""
-                    }`}
-                    onClick={() => handleSort("added", "desc")}
-                  >
-                    <AiOutlineSortDescending />
-                  </a>
-                </div>
-              </div>
-            </th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {sortedFiles.map((item, index) => (
-            <tr key={index} className="hover:bg-gray-50">
-              <td className="p-2 border">
-                {item.type === "folder" ? <FaFolder /> : <FaFileAlt />}
-              </td>
-              <td
-                className="p-2 border cursor-pointer"
-                onClick={() => {
-                  if (item.type === "folder") openFolder(item as Folder);
-                }}
-              >
-                {item.name}
-              </td>
-              <td className="p-2 border">{item.type}</td>
-              <td className="p-2 border">
-                {item.type === "folder" ? "-" : (item as File).size}
-              </td>
-              <td className="p-2 border">
-                {item.type === "folder" ? "-" : (item as File).added}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+                    {item.name}
+                  </td>
+                  <td className="p-2 border">{item.type}</td>
+                  <td className="p-2 border">
+                    {item.type === "folder" ? "-" : (item as File).size}
+                  </td>
+                  <td className="p-2 border">
+                    {item.type === "folder" ? "-" : (item as File).added}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };
