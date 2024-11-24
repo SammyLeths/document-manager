@@ -173,7 +173,7 @@ const DocumentManager: React.FC = () => {
           onChange={(e) => setFilter(e.target.value)}
         />
       </div>
-      <div className="p-2 bg-gray-300 overflow-hidden">
+      <div className="p-1 bg-gray-300 overflow-hidden">
         <div className="overflow-x-auto bg-white">
           <table className="w-full table-auto border-collapse">
             <thead className="text-left">
